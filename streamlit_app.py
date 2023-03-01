@@ -30,9 +30,8 @@ score = st.sidebar.slider('Select min Happiness Score', min_value=0, max_value=1
 df = df[df['Ladder score'] <= score] # Filtering the dataframe.
 
 
-
-st.image("world-happiness-report.jpg", caption='World Happiness Report')
 st.image("ols.jpg", caption='Model Summary')
+st.image("world-happiness-report.jpg", caption='World Happiness Report')
 
 #print dataframe
 st.write(filtered_df)
