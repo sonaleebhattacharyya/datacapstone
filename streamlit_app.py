@@ -71,7 +71,6 @@ ax.set_xticklabels(
 );
 st.pyplot(fig1)
 
-
 from geopy.geocoders import Nominatim
 
 # Load the data
