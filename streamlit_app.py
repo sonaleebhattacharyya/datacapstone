@@ -32,6 +32,7 @@ df = df[df['Ladder score'] <= score] # Filtering the dataframe.
 
 
 st.image("world-happiness-report.jpg", caption='World Happiness Report')
+st.image("ols.jpg", caption='Model Summary')
 
 #print dataframe
 st.write(filtered_df)
@@ -69,11 +70,6 @@ ax.set_xticklabels(
     horizontalalignment='right'
 );
 st.pyplot(fig1)
-
-
-
-st.image("ols.jpg", caption='Model Summary')
-
 
 
 from geopy.geocoders import Nominatim
