@@ -12,7 +12,7 @@ import plotly.express as px
 import seaborn as sns
 
 
-df = pd.read_csv("whr2021.csv")
+df = pd.read_csv("2021_geo.csv")
 
 # adding title and text in the app
 
@@ -27,7 +27,7 @@ else:
     filtered_df = df[df['Regional_Indicator']==select]
 
 score = st.sidebar.slider('Select min Happiness Score', min_value=0, max_value=10, value = 2) # Getting the input.
-df = df[df['Ladder_Score'] <= score] # Filtering the dataframe.
+df = df[df['Ladder score'] <= score] # Filtering the dataframe.
 
 
 
@@ -37,15 +37,15 @@ st.image("world-happiness-report.jpg", caption='World Happiness Report')
 st.write(filtered_df)
 
 fig = px.scatter(filtered_df,
-                x="Logged_GDP_per_capita",
-                y="Healthy_Life_Expectancy",
-                size="Ladder_Score",
-                color="Regional_Indicator",
-                hover_name="Country_Name",
+                x="Logged GDP per capita",
+                y="Healthy life expectancy",
+                size="Ladder score",
+                color="Regional indicator",
+                hover_name="Country name",
                 size_max=10)
 st.write(fig)
 
-st.write(px.bar(filtered_df, y='Ladder_Score', x='Country_Name'))
+st.write(px.bar(filtered_df, y='Ladder score', x='Country name'))
 
 #correlate data
 corr = filtered_df.corr()
@@ -81,35 +81,13 @@ from geopy.geocoders import Nominatim
 df_geo = pd.read_csv('df_final_geo.csv')
 
 # Create the map
-fig = px.scatter_mapbox(df_geo, lat='Latitude', lon='Longitude', hover_name='Country', hover_data=['Happiness.Rank', 'Happiness.Score'], color='Happiness.Score', size='Economy..GDP.per.Capita.', zoom=0, height=500)
+fig = px.scatter_mapbox(df_geo, lat='Latitude', lon='Longitude', hover_name='Country name', hover_data=['Ladder score'], color='Ladder score', size='Logged GDP per capita', zoom=0, height=500)
 fig.update_layout(mapbox_style='open-street-map')
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
 # Build the Streamlit app
-st.title('Happiness Index 2017 Map')
+st.title('Ladder Score 2021 Map')
 st.plotly_chart(fig)
 
 
-# #new map
-# df = pd.read_csv('df_final_geo.csv')
 
-# import folium
-# from folium.plugins import MarkerCluster
-
-# # Create a map centered on the world
-# map_happiness = folium.Map(location=[0, 0], zoom_start=2)
-
-# # Add a marker cluster to the map
-# marker_cluster = MarkerCluster().add_to(map_happiness)
-
-# # Add a marker for each country in the dataframe
-# for i in range(len(df)):
-#     lat = df.loc[i, 'Latitude']
-#     lon = df.loc[i, 'Longitude']
-#     country = df.loc[i, 'Country']
-#     score = df.loc[i, 'Happiness.Score']
-#     popup_text = f'{country}<br>Score: {score}'
-#     folium.Marker(location=[lat, lon], popup=popup_text).add_to(marker_cluster)
-
-# # Display the map
-# st.write(map_happiness._repr_html_(), unsafe_allow_html=True)
