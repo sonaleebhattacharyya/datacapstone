@@ -89,5 +89,6 @@ fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 st.title('Ladder Score 2021 Map')
 st.plotly_chart(fig)
 
+st.image("ols.jpg", caption='Model Summary')
 
 
