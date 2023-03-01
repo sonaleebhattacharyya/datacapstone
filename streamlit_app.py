@@ -85,4 +85,5 @@ st.title('Ladder Score 2021 Map')
 st.plotly_chart(fig)
 
 
+st.image("ols.jpg", caption='Model Summary')
 
