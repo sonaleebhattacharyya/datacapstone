@@ -78,7 +78,7 @@ st.pyplot(fig1)
 from geopy.geocoders import Nominatim
 
 # Load the data
-df_geo = pd.read_csv('df_final_geo.csv')
+df_geo = pd.read_csv('2021_geo.csv')
 
 # Create the map
 fig = px.scatter_mapbox(df_geo, lat='Latitude', lon='Longitude', hover_name='Country name', hover_data=['Ladder score'], color='Ladder score', size='Logged GDP per capita', zoom=0, height=500)
